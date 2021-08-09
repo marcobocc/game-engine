@@ -1,5 +1,5 @@
-#ifndef H_OBJECT
-#define H_OBJECT
+#ifndef H_GAMEOBJECT
+#define H_GAMEOBJECT
 
 #include <tuple>
 #include "components/Transform.h"
@@ -8,7 +8,7 @@
 #include "components/Material.h"
 #include "components/Mesh.h"
 
-class Object {
+class GameObject {
 public:
 	template<typename ComponentType>
 	void AttachComponent(ComponentType* component) {

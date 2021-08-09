@@ -1,6 +1,6 @@
 #include "PhysicsModule.h"
 #include "../EngineCore.h"
-#include "../Object.h"
+#include "../GameObject.h"
 
 PhysicsModule::PhysicsModule(EngineCore* core) :
 	Core(core) {
@@ -8,8 +8,8 @@ PhysicsModule::PhysicsModule(EngineCore* core) :
 
 void PhysicsModule::simulate() {
 	double deltaTime = Core->Time.deltaTime();
-	for (auto it = Core->Scene.Objects.cbegin<Object>(); it != Core->Scene.Objects.cend<Object>(); ++it) {
-		Object* object = it->second.get();
+	for (auto it = Core->Scene.Objects.cbegin<GameObject>(); it != Core->Scene.Objects.cend<GameObject>(); ++it) {
+		GameObject* object = it->second.get();
 		if (object->HasComponent<RigidBody>()) {
 			object->GetComponent<RigidBody>()->update(object->GetComponent<Transform>(), (float)deltaTime);
 		}

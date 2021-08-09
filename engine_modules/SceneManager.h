@@ -5,7 +5,7 @@
 #include <string>
 
 class EngineCore;
-class Object;
+class GameObject;
 class Transform;
 class RigidBody;
 class Camera;
@@ -16,14 +16,14 @@ class Shader;
 class SceneManager {
 public:
 	EngineCore* const Core;
-	BaseManager<std::string, Object> Objects;
+	BaseManager<std::string, GameObject> Objects;
 	BaseManager<std::string, Transform, RigidBody, Camera, Material, Mesh> Components;
 	BaseManager<std::string, Shader> Resources;
-	Object* MainCameraObject;
+	GameObject* MainCameraObject;
 
 	SceneManager(EngineCore* core);
 
-	Object* CreateObject(std::string object_name);
+	GameObject* CreateObject(std::string object_name);
 
 	template<typename ComponentType, typename... Args>
 	ComponentType* CreateComponent(std::string component_name, Args&&... args) {

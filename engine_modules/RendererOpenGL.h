@@ -5,9 +5,8 @@
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
 #include <utility>
-#include "../Object.h"
+#include "../GameObject.h"
 
 class RendererOpenGL {
 public:
@@ -39,7 +38,7 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void render(Object* object, Object* camera) {
+	void render(GameObject* object, GameObject* camera) {
 		bool new_shader = true;
 		bool new_mesh = true;
 		if (m_lastRendered) {
@@ -74,7 +73,7 @@ public:
 	}
 
 private:
-	Object* m_lastRendered;
+	GameObject* m_lastRendered;
 	GLint m_mvTransform_location;
 	GLint m_projTransform_location;
 	GLuint m_vao;
